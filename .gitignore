@@ -4,3 +4,5 @@ __pychache__
 .pypirc
 dist
 build
+.DS_Store
+g2p_en.egg-info
