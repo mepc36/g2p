@@ -15,7 +15,8 @@ import re
 import os
 import unicodedata
 from builtins import str as unicode
-from .expand import normalize_numbers
+from expand import normalize_numbers
+import sys
 
 try:
     nltk.data.find('taggers/averaged_perceptron_tagger.zip')
@@ -183,12 +184,13 @@ class G2p(object):
         return prons[:-1]
 
 if __name__ == '__main__':
-    texts = ["I have $250 in my pocket.", # number -> spell-out
-             "popular pets, e.g. cats and dogs", # e.g. -> for example
-             "I refuse to collect the refuse around here.", # homograph
-             "I'm an activationist."] # newly coined word
+    # texts = ["I have $250 in my pocket.", # number -> spell-out
+    #          "popular pets, e.g. cats and dogs", # e.g. -> for example
+    #          "I refuse to collect the refuse around here.", # homograph
+    #          "I'm an activationist."] # newly coined word
     g2p = G2p()
-    for text in texts:
-        out = g2p(text)
-        print(out)
+    print(g2p(sys.argv[1]))
+    # for text in texts:
+    #     out = g2p(text)
+    #     print(out)
 
